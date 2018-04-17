@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<title>Soundskape Radio</title>
+
+		<style type="text/css">
+			.card {
+				border: none !important;
+			}
+
+			.disclaimer-link {
+				color: white !important;
+			}
+
+			h1, h2, h3, h4, h5, h6 {
+				font-family: Georgia, serif;
+			}
+
+			html, body, body>div {
+				height: 100%;
+			}
+
+			body>div {
+				display: flex;
+				flex-direction: column;
+			}
+
+			#content {
+				flex: 1 0 auto;
+				min-height: 100%;
+			}
+
+			#footer, #header {
+				flex-shrink: 0;
+			}
+		</style>
+ 	</head>
+ 	<body>
+ 		<div class="container-fluid p-0">
+ 			<!-- Navbar -->
+			<nav class="row no-gutters p-2 navbar navbar-expand-lg navbar-dark bg-dark" id="header">
+			 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+			    	<span class="navbar-toggler-icon"></span>
+			  	</button>
+
+		    	<a class="navbar-brand" href="#">Soundskape Radio</a>
+
+			  	<div class="collapse navbar-collapse" id="navbarToggle">
+			    	<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			      		<li class="nav-item">
+			        		<a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a>
+			      		</li>
+			      		<li class="nav-item">
+			        		<a class="nav-link" href="#nuestros-principios">Nuestros Principios</a>
+			      		</li>
+			    	</ul>
+
+			    	<a class="btn btn-light mr-2">Registrarse</a>
+	    			<a class="btn btn-light">Iniciar sesión</a>
+			  	</div>
+			</nav>
+			
+			<!-- Content -->
+			<div class="row no-gutters" id="content">
+				<!-- Carrusel de imagenes -->
+				<div id="carrusel-de-imagenes" class="col-12 carousel slide" data-ride="carousel">
+					<!--Indicadores del carrusel-->
+					<ol class="carousel-indicators">
+				    	<li data-target="#carrusel-de-imagenes" data-slide-to="0" class="active"></li>
+				    	<li data-target="#carrusel-de-imagenes" data-slide-to="1"></li>
+				    	<li data-target="#carrusel-de-imagenes" data-slide-to="2"></li>
+				  	</ol>
+
+				  	<!--Imágenes del carrusel-->
+				  	<div class="carousel-inner">
+				    	<div class="carousel-item active bg-primary">
+				      		<img class="d-block w-100" src="img/ws_Studio_Microphone_2560x1440.jpg" alt="First slide">
+
+				      		<div class="carousel-caption d-none d-md-block">
+					    		<h3>Título de la noticia</h3>
+						    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci.</p>
+						  	</div>
+				    	</div>
+				    	<div class="carousel-item bg-secondary">
+				      		<img class="d-block w-100" src="img/ws_Studio_Microphone_2560x1440.jpg" alt="Second slide">
+
+				      		<div class="carousel-caption d-none d-md-block">
+					    		<h3>Título de la noticia</h3>
+						    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci.</p>
+						  	</div>
+				    	</div>
+				    	<div class="carousel-item bg-success">
+				      		<img class="d-block w-100" src="img/ws_Studio_Microphone_2560x1440.jpg" alt="Third slide">
+
+				      		<div class="carousel-caption d-none d-md-block">
+					    		<h3>Título de la noticia</h3>
+						    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci.</p>
+						  	</div>
+				    	</div>
+				  	</div>
+
+				  	<!--Controles del carrusel-->
+					<a class="carousel-control-prev" href="#carrusel-de-imagenes" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior</span>
+					</a>
+				  	<a class="carousel-control-next" href="#carrusel-de-imagenes" role="button" data-slide="next">
+				    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    	<span class="sr-only">Siguiente</span>
+				  	</a>
+				</div>
+
+				<!-- Sobre Nosotros -->
+				<div class="col-12 p-5 text-center" id="sobre-nosotros">
+					<h3>Sobre nosotros</h3>
+					<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci. Integer auctor nisl ut lorem mattis, vitae malesuada dolor faucibus. Etiam facilisis tristique tellus sed tristique. Vivamus sed volutpat dui, eu vehicula dui. Cras posuere vestibulum nibh, ac dignissim lectus venenatis a. Nunc eleifend magna sed dui sagittis, vitae hendrerit ex efficitur. Ut porta ullamcorper ex, in luctus felis tristique imperdiet.</p>
+				</div>
+
+				<!-- Nuestros Principios -->
+				<div class="col-12 p-5" id="nuestros-principios">
+					<div class="row no-gutters">
+						<h3 class="col-12 text-center">Nuestros principios</h3>
+						<div class="col-6 col-md-4">
+
+							<div class="card">
+			    				<div class="card-body">
+			      					<h5 class="card-title">Característica I</h5>
+			      					<p class="card-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci. Integer auctor nisl ut lorem mattis, vitae malesuada dolor faucibus.</p>
+			    				</div>
+			  				</div>
+						</div>
+
+						<div class="col-6 col-md-4">
+							<div class="card">
+			    				<div class="card-body">
+			      					<h5 class="card-title">Característica II</h5>
+			      					<p class="card-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci. Integer auctor nisl ut lorem mattis, vitae malesuada dolor faucibus.</p>
+			    				</div>
+			  				</div>
+						</div>
+
+						<div class="col-6 col-md-4">
+							<div class="card">
+			    				<div class="card-body">
+			      					<h5 class="card-title">Característica III</h5>
+			      					<p class="card-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci. Integer auctor nisl ut lorem mattis, vitae malesuada dolor faucibus.</p>
+			    				</div>
+			  				</div>
+						</div>
+
+						<div class="col-6 col-md-4">
+							<div class="card">
+			    				<div class="card-body">
+			      					<h5 class="card-title">Característica IV</h5>
+			      					<p class="card-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci. Integer auctor nisl ut lorem mattis, vitae malesuada dolor faucibus.</p>
+			    				</div>
+			  				</div>
+						</div>
+
+						<div class="col-6 col-md-4">
+							<div class="card">
+			    				<div class="card-body">
+			      					<h5 class="card-title">Característica V</h5>
+			      					<p class="card-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci. Integer auctor nisl ut lorem mattis, vitae malesuada dolor faucibus.</p>
+			    				</div>
+			  				</div>
+						</div>
+
+						<div class="col-6 col-md-4">
+							<div class="card">
+			    				<div class="card-body">
+			      					<h5 class="card-title">Característica VI</h5>
+			      					<p class="card-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis orci, facilisis sit amet eros a, consectetur pulvinar orci. Integer auctor nisl ut lorem mattis, vitae malesuada dolor faucibus.</p>
+			    				</div>
+			  				</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Mensaje -->
+				<div class="col-12 card text-center">
+			  		<div class="card-header bg-light text-dark">¿Listo para formar parte de la experiencia <strong>Soundskape?</strong></div>
+				  	<div class="card-body">
+				    	<p class="card-text">Descubre nuevo contenido, crea listas de reproducción y mantente al tanto de las últimas actualizaciones de tus artistas preferidos a través de nuestra plataforma.</p>
+				    	<a href="#" class="btn btn-primary">Suscribirme ahora</a>
+				  	</div>
+				</div>
+			</div>
+
+			<!-- Footer -->
+ 			<div class="row no-gutters bg-dark text-light p-5" id="footer">
+ 				<div class="col-6 col-lg-4">
+ 					<h5>Información de contacto</h5>
+
+ 					<h6><i class="fas fa-phone-square"></i> Teléfono</h6>
+ 					<p>+ XXX XXXX-XXXX</p>
+ 					<h6><i class="fas fa-envelope"></i> Correo Electrónico</h6>
+ 					<p>XXXXXXX@XXXXX.XXX</p>
+ 				</div>
+
+ 				<div class="col-6 col-lg-4">
+ 					<h5>Servicios</h5>
+
+ 					<ul>
+ 						<li>Servicio 1</li>
+ 						<li>Servicio 2</li>
+ 						<li>Servicio 3</li>
+ 						<li>Servicio 4</li>
+ 					</ul>
+ 				</div>
+
+ 				<div class="col-12 col-lg-4">
+ 					<h5>Oficinas</h5>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.867049314124!2d-87.16816178558123!3d14.085024590132445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa334924716c7%3A0xc9884caba07ec548!2sUniversidad+Nacional+Aut%C3%B3noma+de+Honduras!5e0!3m2!1ses-419!2shn!4v1523139939127" width="100%" height="350px" frameborder="0" style="border:0" allowfullscreen></iframe>
+ 				</div>
+
+ 				<div class="col-12 col-md-6 text-center">
+ 					<a href="#" class="disclaimer-link">Política de privacidad</a> | 
+ 					<a href="#" class="disclaimer-link">Términos de servicio</a> | 
+ 					<a href="#" class="disclaimer-link">Política de reembolsos</a></div>
+ 				
+ 				<div class="col-12 col-md-6 text-center">Copyright © 2018 Soundskape Radio</div>
+ 			</div>	
+ 		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<!-- Font Awesome CDN -->
+		<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+ 	</body>
+	</html>
