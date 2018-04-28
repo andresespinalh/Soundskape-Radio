@@ -6,14 +6,14 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST">
+                <form id="sign_in">
                     <div class="msg">Inicia Sesión </div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="username" placeholder="Nombre de usuario" required autofocus>
+                            <input type="text" class="form-control" name="username" ng-model="namesurname" placeholder="Nombre de usuario" required autofocus>
                         </div>
                     </div>
                     <div class="input-group">
@@ -21,7 +21,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                            <input type="password" class="form-control" name="password" ng-model="password" placeholder="Contraseña" required>
                         </div>
                     </div>
                     <div class="row">
@@ -30,7 +30,7 @@
                             <label for="rememberme">Recuérdame</label>
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-block bg-light-green waves-effect" type="submit">Iniciar</button>
+                            <button class="btn btn-block bg-light-green waves-effect" ng-click='IniciarUsuario()' type="submit">Iniciar</button>
                         </div>
                     </div>
                     <div class="row m-t-15 m-b--20">
