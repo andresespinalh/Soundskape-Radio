@@ -15,8 +15,7 @@ angular.module('SoundskapeApp')
 		                                'password':$scope.password		                                	                                
 		                }).then(function successCallback(response) {  
 		           
-						console.log('Send data sucessfully');		              
-
+							console.log('Send data sucessfully');		              
 		         
 		         });
 		          }else{ if(!$scope.terms){$scope.messageconfirm='Verificar terminos y condiciones';}else{$scope.messageconfirm='Confirmar Contraseña';}}
