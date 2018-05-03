@@ -274,9 +274,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a ng-click="abrircanciones()" href="">
                         <i class="material-icons">queue_music</i>
-                        <span>Canciones</span>
+                        <span>Géneros</span>
                     </a>
                 </li>
                 <li>
@@ -286,7 +286,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                     <a  href="">
                         <i class="material-icons">recent_actors</i>
                         <span>Artistas</span>
                     </a>
@@ -305,24 +305,14 @@
                 </li>
 
                 <li class="header">Playlist</li>
+                
                 <li>
                     <a href="" class="menu-toggle">
                         <i class="material-icons col-red">playlist_play</i>
                         <span>Playlist #1</span>
                     </a>
                 </li>
-                <li>
-                    <a href="" class="menu-toggle">
-                        <i class="material-icons col-amber">playlist_play</i>
-                        <span>Playlist #2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="menu-toggle">
-                        <i class="material-icons col-light-blue">playlist_play</i>
-                        <span>Playlist #3</span>
-                    </a>
-                </li>
+                
             </ul>
         </div>
         <!-- #Menu -->
@@ -534,52 +524,62 @@
         </div>
         <!-- #END# Counter Examples -->
         <!-- Hover Zoom Effect -->
+        <div ng-show="viewlistageneros" >
         <div class="block-header">
             <h2>CATEGORÍAS</h2>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                   
                 <div class="info-box bg-pink hover-zoom-effect">
+                    <a ng-click="abrirgenero(names[0].id_genero,names[0].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Latina</div>
-                        <div class="number">15</div>
+                        <div class="text">{{names[0].genero}}</div>
+                        <div class="number">{{names[0].cantidad}}</div>
                     </div>
                 </div>
-
+                    
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-blue hover-zoom-effect">
+                    <a ng-click="abrirgenero(names[1].id_genero,names[1].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Pop</div>
-                        <div class="number">92</div>
+                        <div class="text">{{names[1].genero}}</div>
+                        <div class="number">{{names[1].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-light-blue hover-zoom-effect">
+                    <a ng-click="abrirgenero(names[2].id_genero,names[2].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Fiesta</div>
-                        <div class="number">45</div>
+                        <div class="text">{{names[2].genero}}</div>
+                        <div class="number">{{names[2].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-cyan hover-zoom-effect">
+                    <a ng-click="abrirgenero(names[3].id_genero,names[3].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Teenz</div>
-                        <div class="number">84</div>
+                        <div class="text">{{names[3].genero}}</div>
+                        <div class="number">{{names[3].cantidad}}</div>
                     </div>
                 </div>
             </div>
@@ -589,45 +589,53 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-teal hover-expand-effect">
+                    <a ng-click="abrirgenero(names[4].id_genero,names[4].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Concentración</div>
-                        <div class="number">62</div>
+                        <div class="text">{{names[4].genero}}</div>
+                        <div class="number">{{names[4].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-green hover-expand-effect">
+                    <a ng-click="abrirgenero(names[5].id_genero,names[5].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Rock</div>
-                        <div class="number">142</div>
+                        <div class="text">{{names[5].genero}}</div>
+                        <div class="number">{{names[5].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-light-green hover-expand-effect">
+                    <a ng-click="abrirgenero(names[6].id_genero,names[6].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Indie/Alternativa</div>
-                        <div class="number">63</div>
+                        <div class="text">{{names[6].genero}}</div>
+                        <div class="number">{{names[6].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-lime hover-expand-effect">
+                    <a ng-click="abrirgenero(names[7].id_genero,names[7].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Dance</div>
-                        <div class="number">105</div>
+                        <div class="text">{{names[7].genero}}</div>
+                        <div class="number">{{names[7].cantidad}}</div>
                     </div>
                 </div>
             </div>
@@ -637,45 +645,53 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-yellow">
+                    <a ng-click="abrirgenero(names[8].id_genero,names[8].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Para dormir</div>
-                        <div class="number">127</div>
+                        <div class="text">{{names[8].genero}}</div>
+                        <div class="number">{{names[8].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-amber">
+                    <a ng-click="abrirgenero(names[9].id_genero,names[9].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Hip hop</div>
-                        <div class="number">41</div>
+                        <div class="text">{{names[9].genero}}</div>
+                        <div class="number">{{names[9].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-orange">
+                    <a ng-click="abrirgenero(names[10].id_genero,names[10].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Ejercicio</div>
-                        <div class="number">98</div>
+                        <div class="text">{{names[10].genero}}</div>
+                        <div class="number">{{names[10].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-deep-orange">
+                    <a ng-click="abrirgenero(names[11].id_genero,names[11].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Country</div>
-                        <div class="number">34</div>
+                        <div class="text">{{names[11].genero}}</div>
+                        <div class="number">{{names[11].cantidad}}</div>
                     </div>
                 </div>
             </div>
@@ -683,51 +699,84 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-brown">
+                     <a ng-click="abrirgenero(names[12].id_genero,names[12].genero)" href="">
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Cristiana</div>
-                        <div class="number">86</div>
+                        <div class="text">{{names[12].genero}}</div>
+                        <div class="number">{{names[12].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-grey">
+                     <a ng-click="abrirgenero(names[13].id_genero,names[13].genero)" href="">
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Metal</div>
-                        <div class="number">143</div>
+                        <div class="text">{{names[13].genero}}</div>
+                        <div class="number">{{names[13].cantidad}}</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-blue-grey">
+                     <a ng-click="abrirgenero(names[14].id_genero,names[14].genero)" href="">
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
+                    </a>
                     <div class="content">
-                        <div class="text">Soul</div>
-                        <div class="number">63</div>
+                        <div class="text">{{names[14].genero}}</div>
+                        <div class="number">{{names[14].cantidad}}</div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box bg-black">
-                    <div class="icon">
-                        <i class="material-icons">library_music</i>
-                    </div>
-                    <div class="content">
-                        <div class="text">Jazz</div>
-                        <div class="number">25</div>
+              
+        </div>
+        <!-- #END# Chart Samples -->
+    </div>
+        <div ng-show="viewcanciones">
+            <div class="block-header">
+            <h1 class="font-bold col-teal">{{genero}}</h1>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            
+                            
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>CANCIÓN</th>
+                                        <th>ARTISTA</th>
+                                        <th>PLAY</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  ng-repeat="y in songs">
+                                        
+                                        <td>{{y.titulo}}</td>
+                                        <td>{{y.nombre_artistico}}</td>
+                                        <td><button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float">
+                                         <i class="material-icons">play_arrow</i>
+                                        </button></td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- #END# Chart Samples -->
-
-
     </div>
 </section>

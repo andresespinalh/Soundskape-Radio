@@ -8,6 +8,7 @@
             <div class="body">
                 <form id="sign_up">
                     <div class="msg">Registro de nuevo usuario</div>
+                    
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
@@ -15,7 +16,41 @@
                         <div class="form-line">
                             <input type="text" class="form-control" name="namesurname" ng-model="namesurname" placeholder="Nombre de usuario" required autofocus>
                         </div>
+                        
                     </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="firstname" ng-model="firstname" placeholder="Primer Nombre" required autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="secondname" ng-model="secondname" placeholder="Segundo Nombre" required autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="firstlastname" ng-model="firstlastname" placeholder="Primer Apellido" required autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                         <input type="text" class="form-control" name="secondlastname" ng-model="secondlastname" placeholder="Segundo Apellido" required autofocus>
+                        </div>
+                    </div>
+                    
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">email</i>
@@ -26,10 +61,31 @@
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon">
+                            <i class="material-icons">room</i>
+                        </span>
+                                <div class="form-line"> 
+                                    <select class="form-control" name="city" ng-model="city">
+                                        
+                                        <option ng-repeat="x in cities">{{x.ciudad}}</option>
+                                      
+                                    </select>
+                                </div>
+                    </div>
+                    <div class="input-group">
+                            <span class="input-group-addon">
+                            <i class="material-icons">event</i>
+                        </span>
+                            <div class="form-line">
+                                    <input type="date" name="borndate" ng-model="borndate" class="form-control" placeholder="Please choose a date...">
+                            </div>
+                           
+                     </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" minlength="6" ng-model="password" placeholder="Contraseña" required>
+                            <input type="password" class="form-control" name="password" id="pass" minlength="6" ng-model="password" placeholder="Contraseña" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -49,7 +105,7 @@
                     <button class="btn btn-block btn-lg bg-light-green waves-effect" ng-click='insertuser()' type="submit">Registrarme</button>
 
                     <div class="m-t-25 m-b--5 align-center">
-                        <a href="#">Clic aquí, si tienes cuenta con nosotros</a>
+                        <a href="#/InicioSesion">Clic aquí, si tienes cuenta con nosotros</a>
                     </div>
 
                     <p style="color:red;">{{messageconfirm}}</p>
