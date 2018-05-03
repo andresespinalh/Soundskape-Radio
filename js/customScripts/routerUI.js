@@ -24,6 +24,7 @@ angular.module('SoundskapeApp', ['ngResource','ui.router'])
 				templateUrl: 'views/Principal.html',
 				controller: 'PrincipalController'
             })
+          
             
             /*Ejemplo añidado
 				.state('Principal.LugaresFiltrados', {

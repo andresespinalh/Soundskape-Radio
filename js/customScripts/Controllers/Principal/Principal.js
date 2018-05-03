@@ -3,6 +3,58 @@
 angular.module('SoundskapeApp')
 
 	.controller('PrincipalController', ['$scope','$location','$http', function($scope, $location, $http){
+        $scope.viewlistageneros=true;
+        $scope.viewcanciones=false;
+        $http.get("php/dbcantidadgenero.php")
+                     .then(function (response) {$scope.names = response.data.records;});        
+
+
+        $scope.abrirgenero = function(id_genero,genero){
+            $scope.viewlistageneros=false;
+            $scope.viewcanciones=true;
+            $scope.id_genero=id_genero;
+            $scope.genero=genero;
+
+            $http.post("php/dbobtenercanciones.php", {
+                                        'id_genero':id_genero                                                                        
+                        }).then(function successCallback(response) {  
+                   
+                    $scope.songs = response.data.records;                  
+
+                 
+                 });
+
+        }
+        $scope.abrircanciones = function(){
+            $scope.viewcanciones=false;
+            $scope.viewlistageneros=true;
+              
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $(function () {
             //Widgets count
             $('.count-to').countTo();
