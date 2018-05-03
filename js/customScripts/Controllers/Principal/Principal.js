@@ -32,6 +32,25 @@ angular.module('SoundskapeApp')
 
         }
 
+        $scope.stopsong = function(){
+            
+           var sound = document.getElementById("audio");
+            sound.pause();
+            sound.currentTime = 0;
+     /*       sound.src =""; 
+            sound.load();*/
+        }
+        $scope.playsong = function(titulo,nombre_artistico,duracion,direccion){
+            
+           var sound = document.getElementById("audio");
+           $scope.titulo=titulo;
+           $scope.nombre_artistico=nombre_artistico;
+           $scope.duracion=duracion;
+           
+            sound.play();
+            sound.currentTime = 0;
+        }
+
 
 
 
