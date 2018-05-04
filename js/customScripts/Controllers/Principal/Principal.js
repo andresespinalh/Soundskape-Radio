@@ -16,35 +16,31 @@ angular.module('SoundskapeApp')
             $scope.genero=genero;
 
             $http.post("php/dbobtenercanciones.php", {
-                                        'id_genero':id_genero                                                                        
-                        }).then(function successCallback(response) {  
-                   
-                    $scope.songs = response.data.records;                 
-                 });
-
+                                'id_genero':id_genero                                                                        
+                }).then(function successCallback(response) {  
+            
+                $scope.songs = response.data.records;                 
+            });
         }
+
         $scope.abrircanciones = function(){
             $scope.viewcanciones=false;
             $scope.viewlistageneros=true;
-              
-
         }
 
-        $scope.stopsong = function(){
-            
+        $scope.stopsong = function(){            
            var sound = document.getElementById("audio");
             sound.pause();
             sound.currentTime = 0;
      /*       sound.src =""; 
             sound.load();*/
         }
-        $scope.playsong = function(titulo,nombre_artistico,duracion,direccion){
-            
+
+        $scope.playsong = function(titulo,nombre_artistico,duracion,direccion){            
            var sound = document.getElementById("audio");
            $scope.titulo=titulo;
            $scope.nombre_artistico=nombre_artistico;
-           $scope.duracion=duracion;
-           
+           $scope.duracion=duracion;      
             sound.play();
             sound.currentTime = 0;
         }

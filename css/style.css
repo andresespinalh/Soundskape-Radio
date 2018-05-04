@@ -3072,8 +3072,8 @@ section.content {
     width: 120px; }
     .info-box .icon i {
       color: #fff;
-      font-size: 50px;
-      line-height: 80px; }
+      font-size: 70px;
+      line-height: 120px; }
     .info-box .icon .chart.chart-bar {
       height: 100%;
       line-height: 100px; }
@@ -3093,12 +3093,12 @@ section.content {
     display: inline-block;
     padding: 7px 10px; }
     .info-box .content .text {
-      font-size: 13px;
-      margin-top: 11px;
+      font-size: 16px;
+      margin-top: 8px;
       color: #555; }
     .info-box .content .number {
       font-weight: normal;
-      font-size: 26px;
+      font-size: 40px;
       margin-top: -4px;
       color: #555; }
 

@@ -333,7 +333,7 @@
                         <i class="material-icons">queue_music</i>
                     </div>
                     <div class="content">
-                        <div class="text">Electro Latino</div>
+                        <div class="text">Top Románticas</div>
                         <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">257</div>
                     </div>
                 </div>
@@ -344,7 +344,7 @@
                         <i class="material-icons">queue_music</i>
                     </div>
                     <div class="content">
-                        <div class="text">Últimas Románticas</div>
+                        <div class="text">Top Instrumental</div>
                         <div class="number count-to" data-from="0" data-to="117" data-speed="1000" data-fresh-interval="20">117</div>
                     </div>
                 </div>
@@ -370,7 +370,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                    
-                <div class="info-box hover-zoom-effect">
+                <div class="info-box bg-pink hover-zoom-effect">
                     <a ng-click="abrirgenero(names[0].id_genero,names[0].genero)"> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
@@ -581,7 +581,7 @@
     </div>
         <div ng-show="viewcanciones">
             <div class="block-header">
-            <h1 class="font-bold col-teal">{{genero}}</h1>
+                <h1 class="font-bold col-teal">{{genero}}</h1>
             </div>
 
             <div class="row clearfix">
@@ -598,51 +598,48 @@
                                         <th>CANCIÓN</th>
                                         <th>ARTISTA</th>
                                         <th>PLAY</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  ng-repeat="y in songs">
-                                        
+                                    <tr  ng-repeat="y in songs">                                        
                                         <td>{{y.titulo}}</td>
                                         <td>{{y.nombre_artistico}}</td>
                                         <td><button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#defaultModal" ng-click="playsong(y.titulo,y.nombre_artistico,genero,y.duracion,y.direccion)">
-                                         <i class="material-icons">play_arrow</i>
-                                        </button>
-                                        <!-- Large Size -->
-                                       
+                                            <i class="material-icons">play_arrow</i>
+                                            </button>                                       
                                         </td>
                                         <td><button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float">
-                                         <i class="material-icons">add</i>
-                                        </button></td>
+                                            <i class="material-icons">add</i>
+                                            </button>
+                                        </td>
                                     </tr>
                                    
                                 </tbody>
                                 <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title" id="defaultModalLabel">{{titulo}} - {{nombre_artistico}}</h4>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="modal-body">
-                                                         <video id="audio" width="500" height="500" controls poster="gif/music.gif">
-                                                              <source src="02.mp3" type="audio/mpeg">
-                                                              <track  kind="metadata">
-                                                        </video><br><hr>
-                                                        <p class="font-bold">Artista: {{nombre_artistico}}</p>
-                                                        <p class="font-bold">Canción: {{titulo}}</p>   
-                                                        <p class="font-bold">Genero: {{genero}}</p>
-                                                        <p class="font-bold">Duración: {{duracion}}</p>
-                                                    </div>
-                                                    
-                                                    <div class="modal-footer">
-                                                        
-                                                        <button type="submit" ng-click="stopsong()" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
-                                                    </div>
-                                                </div>
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="defaultModalLabel">{{titulo}} - {{nombre_artistico}}</h4>
+                                            </div>
+                                            <hr>
+                                            <div class="modal-body">
+                                                    <video id="audio" width="500" height="500" controls poster="gif/music.gif">
+                                                        <source src="02.mp3" type="audio/mpeg">
+                                                        <track  kind="metadata">
+                                                </video><br><hr>
+                                                <p class="font-bold">Artista: {{nombre_artistico}}</p>
+                                                <p class="font-bold">Canción: {{titulo}}</p>   
+                                                <p class="font-bold">Genero: {{genero}}</p>
+                                                <p class="font-bold">Duración: {{duracion}}</p>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                                
+                                                <button type="submit" ng-click="stopsong()" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
                             </table>
                         </div>
                     </div>
