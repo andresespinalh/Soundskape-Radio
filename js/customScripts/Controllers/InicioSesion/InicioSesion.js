@@ -11,11 +11,17 @@ angular.module('SoundskapeApp')
 		                                'password':$scope.password		                                	                                
 		                }).then(function successCallback(response) {  
 		           
-						console.log('Send data sucessfully');		              
+						console.log('Send data sucessfully');
+						var user="";		              
+						user = response.data.records; 
+						$scope.nickname=user[0].alias; 
+						
 
+						console.log($scope.nickname);
 		         
 		         });
 		
 	 	}
+
 
 	 }]);
