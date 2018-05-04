@@ -1,16 +1,40 @@
 <?php 
-    $data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"));
 
-    $namesurname = $data->namesurname;
-    $password = $data->password;
 
-    $con = mysql_connect("localhost","root","");
-    mysql_select_db("database_name");
+$namesurname = $data->namesurname;
+$password = $data->password;
 
-    $sql = "Script sql goes here";
 
-    $result = mysql_query($sql);
 
-    $con->close();
+$con = new mysqli("localhost","root","","radio");
+
+
+
+
+$result = $con->query( "SELECT * FROM usuario WHERE alias='$namesurname'");
+
+
+
+while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
+	$realpassword=$rs['contrasenia'];
+	
+}
+
+$realpassword = base64_decode($realpassword);
+
+
+
+if($realpassword==$password){
+	$outp="";
+ $outp .= '{"alias":"'   . $namesurname        . '"}';
+ $outp =utf8_decode('{"records":['.$outp.']}');
+
+
+echo $outp;
+
+}
+
+
 
 ?>
