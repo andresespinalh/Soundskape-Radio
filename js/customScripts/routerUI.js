@@ -23,8 +23,8 @@ angular.module('SoundskapeApp', ['ngResource','ui.router'])
 				url:'/Principal',
 				templateUrl: 'views/Principal.html',
 				controller: 'PrincipalController'
-            })
-          
+			});
+			$urlRouterProvider.otherwise('/Principal');
             
             /*Ejemplo añidado
 				.state('Principal.LugaresFiltrados', {

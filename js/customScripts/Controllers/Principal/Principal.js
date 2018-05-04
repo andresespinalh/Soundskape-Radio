@@ -19,9 +19,7 @@ angular.module('SoundskapeApp')
                                         'id_genero':id_genero                                                                        
                         }).then(function successCallback(response) {  
                    
-                    $scope.songs = response.data.records;                  
-
-                 
+                    $scope.songs = response.data.records;                 
                  });
 
         }
