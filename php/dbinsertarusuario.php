@@ -1,10 +1,12 @@
 <?php 
+include('dbconexion.php'); 
+$conexion = conectar(); //establece conexion con la base
+
 $data = json_decode(file_get_contents("php://input"));
 
-
+//Se recibe toda la data del formulario
 $namesurname = $data->namesurname;
 $password = $data->password;
-
 $email = $data->email;
 $borndate = $data->borndate;
 $city = $data->city;
@@ -12,51 +14,35 @@ $firstname = $data->firstname;
 $secondname = $data->secondname;
 $firstlastname = $data->firstlastname;
 $secondlastname = $data->secondlastname;
-$password=base64_encode($password);
-$now = date('Y-m-d');
+$password=base64_encode($password); //Encriptacion de la contraseña
+$now = date('Y-m-d'); //Fecha de hoy
 
 
+//Insercion en la tabla persona
+$conexion->query( "call insertperson ( '$firstname','$secondname','$firstlastname','$secondlastname','$email','$borndate','$city')");
+
+$conexion = conectar();//reinicia la conexión
+
+//obtencion del id persona recien insertado
+$sql_idpersona = $conexion->query('SELECT id_persona FROM persona ORDER BY id_persona DESC LIMIT 1');
 
 
-try{
-$con = mysql_connect("localhost","root","");
-mysql_select_db("radio");
+$row_id_persona = mysqli_fetch_array($sql_idpersona)  or die(mysqli_error());
 
-$conn = new mysqli("localhost","root","","radio");
-$result = $conn->query( "SELECT id_ciudad FROM ciudad WHERE ciudad='$city'");
+$personid=$row_id_persona[0];
 
 
-while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
-	$cityid=$rs['id_ciudad'];
-}
+//obtencion del tipo de usuario
+$sql_id_tipo= $conexion->query('SELECT id_tipo_usuario FROM tipo_usuario ORDER BY id_tipo_usuario DESC LIMIT 1');
 
 
+$row_id_tipo = mysqli_fetch_array($sql_id_tipo)  or die(mysqli_error());
 
+$id_tipo=$row_id_tipo[0];
 
-$sql = "INSERT INTO persona(primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, correo_electronico, fecha_nacimiento, id_ciudad) VALUES ('$firstname','$secondname','$firstlastname','$secondlastname','$email','$borndate','$cityid')";
+//Insercion del usuario
+$conexion->query("INSERT INTO usuario( id_usuario,alias,contrasenia, fecha_ingreso, id_tipo_usuario, id_persona) VALUES ('$namesurname','$namesurname','$password','$now','$id_tipo','$personid')");
 
-
-$result = mysql_query($sql);
-
-$result1 = $conn->query( "SELECT id_persona FROM persona ORDER BY id_persona ASC");
-
-
-while($rs1 = $result1->fetch_array(MYSQLI_ASSOC)) {
-	$personid=$rs1['id_persona'];
-}
-
-
-$sql1="INSERT INTO usuario( id_usuario,alias,contrasenia, fecha_ingreso, id_tipo_usuario, id_persona) VALUES ('$namesurname','$namesurname','$password','$now',102,'$personid')";
-
-
-$result2 = mysql_query($sql1);
-}catch(Exception $e){
-	echo $e+$cityid;
-}
-
-
-
-
-
+$conexion->Close();//Cierre de la conexion
 
 ?>

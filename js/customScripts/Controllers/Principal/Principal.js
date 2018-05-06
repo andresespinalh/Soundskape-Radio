@@ -3,46 +3,97 @@
 angular.module('SoundskapeApp')
 
 	.controller('PrincipalController', ['$scope','$location','$http', function($scope, $location, $http){
-        $scope.viewlistageneros=true;
-        $scope.viewcanciones=false;
+        $scope.viewlistageneros=true; //vista de la lista de generos
+        $scope.viewcanciones=false; //vista de las canciones por genero
+        $scope.visitante="Visitante"; // vista del label visitante
+        
+
+
+        var urlparam = $location.search(); //obtencion de los datos del inicio de sesion
+        var idusuario;
+        $scope.usuario="";//declaracion de usuario
+        
+        
+        if(typeof urlparam.param === "undefined"){ //si no obtiene nada del inicio de sesion muestra los botones de registro y login
+            $scope.MostrarBotones=true;
+            $scope.MostrarPerfil=false; //vista del perfil
+            
+        }else{
+            $scope.visitante="";
+            idusuario=urlparam.param; //recibe el id usuario 
+            $scope.MostrarBotones=false;
+            $scope.MostrarPerfil=true;
+
+            //Obtiene data del usuario
+            $http.post("php/dbobtenerusuario.php", {
+                                        'id_usuario':idusuario          //envio del id usuario para obtener todos sus datos                                                      
+                        }).then(function successCallback(response) {  
+                                      
+                        $scope.usuario = response.data.records; 
+                                
+                 });
+        }
+
+
+
         $http.get("php/dbcantidadgenero.php")
-                     .then(function (response) {$scope.names = response.data.records;});        
+                     .then(function (response) {$scope.names = response.data.records;});  //obtiene los generos por cantidad de canciones      
 
 
-        $scope.abrirgenero = function(id_genero,genero){
-            $scope.viewlistageneros=false;
-            $scope.viewcanciones=true;
-            $scope.id_genero=id_genero;
+        $scope.abrirgenero = function(id_genero,genero){ 
+            $scope.viewlistageneros=false; //desaparece la vista de lista de generos
+            $scope.viewcanciones=true; //muestra la vista de canciones segun el genero seleccionado
+            $scope.id_genero=id_genero; //obtiene el id genero para recibir canciones por genero
             $scope.genero=genero;
 
             $http.post("php/dbobtenercanciones.php", {
-                                'id_genero':id_genero                                                                        
-                }).then(function successCallback(response) {  
-            
-                $scope.songs = response.data.records;                 
-            });
-        }
+                                        'id_genero':id_genero                                                                        
+                        }).then(function successCallback(response) {  
+                   
+                    $scope.songs = response.data.records;                  
 
+                 
+                 });
+
+        }
         $scope.abrircanciones = function(){
             $scope.viewcanciones=false;
-            $scope.viewlistageneros=true;
+            $scope.viewlistageneros=true; //muestra el view de lista por genero
+              
+
         }
 
-        $scope.stopsong = function(){            
+        $scope.stopsong = function(){ //detiene la cancion del modal
+            
            var sound = document.getElementById("audio");
             sound.pause();
             sound.currentTime = 0;
      /*       sound.src =""; 
             sound.load();*/
         }
-
-        $scope.playsong = function(titulo,nombre_artistico,duracion,direccion){            
+        $scope.playsong = function(titulo,nombre_artistico,duracion,direccion){ //obtiene datos y reproduce la cancion del modal
+            
            var sound = document.getElementById("audio");
            $scope.titulo=titulo;
            $scope.nombre_artistico=nombre_artistico;
-           $scope.duracion=duracion;      
+           $scope.duracion=duracion;
+           
             sound.play();
             sound.currentTime = 0;
+        }
+        $scope.CerrarSesion = function(){ //cierra la sesion y elimina todos los datos
+               
+               
+               $scope.usuario="";
+               $scope.visitante="Visitante";
+               $scope.MostrarBotones=true;
+               $scope.MostrarPerfil=false;
+
+
+               $location.path('/Principal');
+               $location.search({});
+              
+              
         }
 
 

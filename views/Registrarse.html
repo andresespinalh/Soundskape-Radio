@@ -1,7 +1,7 @@
 <div class="signup-page">
     <div class="signup-box">
         <div class="logo">
-            <a href="javascript:void(0);">Soundskape<b> Radio</b></a>
+            <a href="#/Principal">Soundskape<b> Radio</b></a>
             <small>Proyecto - Industria del Software</small>
         </div>
         <div class="card">
@@ -31,7 +31,7 @@
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="secondname" ng-model="secondname" placeholder="Segundo Nombre" required autofocus>
+                            <input type="text" class="form-control" name="secondname" ng-model="secondname" placeholder="Segundo Nombre">
                         </div>
                     </div>
                     <div class="input-group">
@@ -47,7 +47,7 @@
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                         <input type="text" class="form-control" name="secondlastname" ng-model="secondlastname" placeholder="Segundo Apellido" required autofocus>
+                         <input type="text" class="form-control" name="secondlastname" ng-model="secondlastname" placeholder="Segundo Apellido">
                         </div>
                     </div>
                     
@@ -105,9 +105,11 @@
                     <button class="btn btn-block btn-lg bg-light-green waves-effect" ng-click='insertuser()' type="submit">Registrarme</button>
 
                     <div class="m-t-25 m-b--5 align-center">
-                        <a href="#/InicioSesion">Clic aquí, si tienes cuenta con nosotros</a>
+                        <a href="#/InicioSesion">Clic aquí, si tienes cuenta con nosotros</a><br>
                     </div>
-
+                    <div class=" align-center">
+                    <a href="#/Principal" style="color:green;">Volver al inicio</a>
+                    </div>
                     <p style="color:red;">{{messageconfirm}}</p>
                 </form>
             </div>

@@ -1,3 +1,21 @@
+<!-- Page Loader 
+<div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Por favor espera...</p>
+        </div>
+</div>
+-->
+<!-- #END# Page Loader -->
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
 <!-- #END# Overlay For Sidebars -->
@@ -18,11 +36,12 @@
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="index.html">Soundskape - Radio</a>
+            <a class="navbar-brand" href="">Soundskape - Radio</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!-- Call Search -->
+                
                 <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                 <!-- #END# Call Search -->
                 <!-- Notifications -->
@@ -204,16 +223,24 @@
                                         </div>
                                     </a>
                                 </li>
+                                
                             </ul>
                         </li>
                         <li class="footer">
                             <a href="javascript:void(0);">View All Tasks</a>
                         </li>
+
                     </ul>
+                    
                 </li>
+                
+               <li><div ng-show="MostrarBotones"><a href="#/Registrarse"><button type="button" class="btn bg-indigo waves-effect">Registrase</button></a></div></li>
+                <li><div ng-show="MostrarBotones"><a href="#/InicioSesion"><button type="button" class="btn bg-red waves-effect">Iniciar</button></a></div></li>
                 <!-- #END# Tasks -->
-                <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                
+
             </ul>
+            
         </div>
     </div>
 </nav>
@@ -227,60 +254,68 @@
                 <img src="images/user.png" width="48" height="48" alt="User" />
             </div>
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nombre de usuario</div>
-                <div class="email">correo@gmail.com</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{usuario[0].alias}}{{visitante}}</div>
+                <div class="email">{{usuario[0].correo_electronico}}</div>
+                <div ng-show="MostrarPerfil">
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#ModalPerfil"><i class="material-icons">person</i>Perfil</a>
+
+
+                
+
+                        </li>
                         <li role="seperator" class="divider"></li>
 <!--                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
                         <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                         <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                         <li role="seperator" class="divider"></li>
 -->
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Cerrar sesión</a></li>
+                        <li><a href="#/Principal" ng-click="CerrarSesion()"><i class="material-icons">input</i>Cerrar sesión</a></li>
                     </ul>
+                </div>
                 </div>
             </div>
         </div>
         <!-- #User Info -->
         <!-- Menu -->
+
         <div class="menu">
             <ul class="list">
                 <li class="header">Biblioteca</li>
                 <li class="active">
-                    <a href="index.html">
+                    <a href="" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons">hearing</i>
                         <span>Escuchadas reciente</span>
                     </a>
                 </li>
                 <li>
-                    <a ng-click="abrircanciones()" href="">
+                    <a ng-click="abrircanciones()" href="" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons">queue_music</i>
                         <span>Géneros</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons">library_books</i>
                         <span>Álbumes</span>
                     </a>
                 </li>
                 <li>
-                     <a  href="">
+                     <a  href="" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons">recent_actors</i>
                         <span>Artistas</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons">radio</i>
                         <span>Emisoras</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons">widgets</i>
                         <span>Archivos Locales</span>
                     </a>
@@ -289,7 +324,7 @@
                 <li class="header">Playlist</li>
                 
                 <li>
-                    <a href="" class="menu-toggle">
+                    <a href="" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons col-red">playlist_play</i>
                         <span>Playlist #1</span>
                     </a>
@@ -306,7 +341,185 @@
         </div>
         <!-- #Footer -->
     </aside>
+    <div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="font-bold col-teal">MI PERFIL</h4>
+                            <hr>
+                        </div>
+                        <div class="modal-body">
+                                        
+                                        <h4>Nickname</h4>
+                                        <input type="text" readonly class="form-control" placeholder="{{usuario[0].alias}}">
+                                        <h4>Primer Nombre</h4>
+                                        <input type="text" class="form-control" readonly class="form-control" placeholder="{{usuario[0].primer_nombre}}">
+                                        <h4>Segundo Nombre</h4>
+                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].segundo_nombre}}">
+                                        <h4>Primer Apellido</h4>
+                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].primer_apellido}}">
+                                        <h4>Segundo Apellido</h4>
+                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].segundo_apellido}}">
+                                        <h4>Correo Electronico</h4>
+                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].correo_electronico}}">
+                                        <h4>Fecha de nacimiento</h4>
+                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].fecha_nacimiento}}">
+                                        <h4>Ciudad</h4>
+                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].ciudad}}">
+                                        <h4>País</h4>
+                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].pais}}">
+                                        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     <!-- #END# Left Sidebar -->
+    <!-- Right Sidebar 
+    <aside id="rightsidebar" class="right-sidebar">
+        <ul class="nav nav-tabs tab-nav-right" role="tablist">
+            <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>
+            <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
+                <ul class="demo-choose-skin">
+                    <li data-theme="red" class="active">
+                        <div class="red"></div>
+                        <span>Red</span>
+                    </li>
+                    <li data-theme="pink">
+                        <div class="pink"></div>
+                        <span>Pink</span>
+                    </li>
+                    <li data-theme="purple">
+                        <div class="purple"></div>
+                        <span>Purple</span>
+                    </li>
+                    <li data-theme="deep-purple">
+                        <div class="deep-purple"></div>
+                        <span>Deep Purple</span>
+                    </li>
+                    <li data-theme="indigo">
+                        <div class="indigo"></div>
+                        <span>Indigo</span>
+                    </li>
+                    <li data-theme="blue">
+                        <div class="blue"></div>
+                        <span>Blue</span>
+                    </li>
+                    <li data-theme="light-blue">
+                        <div class="light-blue"></div>
+                        <span>Light Blue</span>
+                    </li>
+                    <li data-theme="cyan">
+                        <div class="cyan"></div>
+                        <span>Cyan</span>
+                    </li>
+                    <li data-theme="teal">
+                        <div class="teal"></div>
+                        <span>Teal</span>
+                    </li>
+                    <li data-theme="green">
+                        <div class="green"></div>
+                        <span>Green</span>
+                    </li>
+                    <li data-theme="light-green">
+                        <div class="light-green"></div>
+                        <span>Light Green</span>
+                    </li>
+                    <li data-theme="lime">
+                        <div class="lime"></div>
+                        <span>Lime</span>
+                    </li>
+                    <li data-theme="yellow">
+                        <div class="yellow"></div>
+                        <span>Yellow</span>
+                    </li>
+                    <li data-theme="amber">
+                        <div class="amber"></div>
+                        <span>Amber</span>
+                    </li>
+                    <li data-theme="orange">
+                        <div class="orange"></div>
+                        <span>Orange</span>
+                    </li>
+                    <li data-theme="deep-orange">
+                        <div class="deep-orange"></div>
+                        <span>Deep Orange</span>
+                    </li>
+                    <li data-theme="brown">
+                        <div class="brown"></div>
+                        <span>Brown</span>
+                    </li>
+                    <li data-theme="grey">
+                        <div class="grey"></div>
+                        <span>Grey</span>
+                    </li>
+                    <li data-theme="blue-grey">
+                        <div class="blue-grey"></div>
+                        <span>Blue Grey</span>
+                    </li>
+                    <li data-theme="black">
+                        <div class="black"></div>
+                        <span>Black</span>
+                    </li>
+                </ul>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="settings">
+                <div class="demo-settings">
+                    <p>GENERAL SETTINGS</p>
+                    <ul class="setting-list">
+                        <li>
+                            <span>Report Panel Usage</span>
+                            <div class="switch">
+                                <label><input type="checkbox" checked><span class="lever"></span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Email Redirect</span>
+                            <div class="switch">
+                                <label><input type="checkbox"><span class="lever"></span></label>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>SYSTEM SETTINGS</p>
+                    <ul class="setting-list">
+                        <li>
+                            <span>Notifications</span>
+                            <div class="switch">
+                                <label><input type="checkbox" checked><span class="lever"></span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Auto Updates</span>
+                            <div class="switch">
+                                <label><input type="checkbox" checked><span class="lever"></span></label>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>ACCOUNT SETTINGS</p>
+                    <ul class="setting-list">
+                        <li>
+                            <span>Offline</span>
+                            <div class="switch">
+                                <label><input type="checkbox"><span class="lever"></span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Location Permission</span>
+                            <div class="switch">
+                                <label><input type="checkbox" checked><span class="lever"></span></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </aside>
+    < #END# Right Sidebar -->
 </section>
 
 <section class="content">
@@ -333,7 +546,7 @@
                         <i class="material-icons">queue_music</i>
                     </div>
                     <div class="content">
-                        <div class="text">Top Románticas</div>
+                        <div class="text">Electro Latino</div>
                         <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">257</div>
                     </div>
                 </div>
@@ -344,7 +557,7 @@
                         <i class="material-icons">queue_music</i>
                     </div>
                     <div class="content">
-                        <div class="text">Top Instrumental</div>
+                        <div class="text">Últimas Románticas</div>
                         <div class="number count-to" data-from="0" data-to="117" data-speed="1000" data-fresh-interval="20">117</div>
                     </div>
                 </div>
@@ -371,7 +584,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                    
                 <div class="info-box bg-pink hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[0].id_genero,names[0].genero)"> 
+                    <a ng-click="abrirgenero(names[0].id_genero,names[0].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -385,7 +598,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-blue hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[1].id_genero,names[1].genero)"> 
+                    <a ng-click="abrirgenero(names[1].id_genero,names[1].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -398,7 +611,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-light-blue hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[2].id_genero,names[2].genero)"> 
+                    <a ng-click="abrirgenero(names[2].id_genero,names[2].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -411,7 +624,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-cyan hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[3].id_genero,names[3].genero)"> 
+                    <a ng-click="abrirgenero(names[3].id_genero,names[3].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -428,7 +641,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-teal hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[4].id_genero,names[4].genero)"> 
+                    <a ng-click="abrirgenero(names[4].id_genero,names[4].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -441,7 +654,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-green hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[5].id_genero,names[5].genero)"> 
+                    <a ng-click="abrirgenero(names[5].id_genero,names[5].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -454,7 +667,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-light-green hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[6].id_genero,names[6].genero)"> 
+                    <a ng-click="abrirgenero(names[6].id_genero,names[6].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -467,7 +680,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-lime hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[7].id_genero,names[7].genero)"> 
+                    <a ng-click="abrirgenero(names[7].id_genero,names[7].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -484,7 +697,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-yellow hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[8].id_genero,names[8].genero)"> 
+                    <a ng-click="abrirgenero(names[8].id_genero,names[8].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -497,7 +710,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-amber hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[9].id_genero,names[9].genero)"> 
+                    <a ng-click="abrirgenero(names[9].id_genero,names[9].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -510,7 +723,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-orange hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[10].id_genero,names[10].genero)"> 
+                    <a ng-click="abrirgenero(names[10].id_genero,names[10].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -523,7 +736,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-deep-orange hover-zoom-effect">
-                    <a ng-click="abrirgenero(names[11].id_genero,names[11].genero)"> 
+                    <a ng-click="abrirgenero(names[11].id_genero,names[11].genero)" href=""> 
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -538,7 +751,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-brown hover-zoom-effect">
-                     <a ng-click="abrirgenero(names[12].id_genero,names[12].genero)">
+                     <a ng-click="abrirgenero(names[12].id_genero,names[12].genero)" href="">
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -551,7 +764,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-grey hover-zoom-effect">
-                     <a ng-click="abrirgenero(names[13].id_genero,names[13].genero)">
+                     <a ng-click="abrirgenero(names[13].id_genero,names[13].genero)" href="">
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -564,7 +777,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-blue-grey hover-zoom-effect">
-                     <a ng-click="abrirgenero(names[14].id_genero,names[14].genero)">
+                     <a ng-click="abrirgenero(names[14].id_genero,names[14].genero)" href="">
                     <div class="icon">
                         <i class="material-icons">library_music</i>
                     </div>
@@ -581,7 +794,7 @@
     </div>
         <div ng-show="viewcanciones">
             <div class="block-header">
-                <h1 class="font-bold col-teal">{{genero}}</h1>
+            <h1 class="font-bold col-teal">{{genero}}</h1>
             </div>
 
             <div class="row clearfix">
@@ -598,48 +811,52 @@
                                         <th>CANCIÓN</th>
                                         <th>ARTISTA</th>
                                         <th>PLAY</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  ng-repeat="y in songs">                                        
+                                    <tr  ng-repeat="y in songs">
+                                        
                                         <td>{{y.titulo}}</td>
                                         <td>{{y.nombre_artistico}}</td>
-                                        <td><button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#defaultModal" ng-click="playsong(y.titulo,y.nombre_artistico,genero,y.duracion,y.direccion)">
-                                            <i class="material-icons">play_arrow</i>
-                                            </button>                                       
+                                        <td><button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#defaultModal" ng-click="playsong(y.titulo,y.nombre_artistico,y.duracion,y.direccion)">
+                                         <i class="material-icons">play_arrow</i>
+                                        </button>
+                                        <!-- Large Size -->
+                                       
                                         </td>
                                         <td><button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float">
-                                            <i class="material-icons">add</i>
-                                            </button>
-                                        </td>
+                                         <i class="material-icons">add</i>
+                                        </button></td>
                                     </tr>
                                    
                                 </tbody>
                                 <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="defaultModalLabel">{{titulo}} - {{nombre_artistico}}</h4>
-                                            </div>
-                                            <hr>
-                                            <div class="modal-body">
-                                                    <video id="audio" width="500" height="500" controls poster="gif/music.gif">
-                                                        <source src="02.mp3" type="audio/mpeg">
-                                                        <track  kind="metadata">
-                                                </video><br><hr>
-                                                <p class="font-bold">Artista: {{nombre_artistico}}</p>
-                                                <p class="font-bold">Canción: {{titulo}}</p>   
-                                                <p class="font-bold">Genero: {{genero}}</p>
-                                                <p class="font-bold">Duración: {{duracion}}</p>
-                                            </div>
-                                            
-                                            <div class="modal-footer">
-                                                
-                                                <button type="submit" ng-click="stopsong()" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="defaultModalLabel">{{titulo}} - {{nombre_artistico}}</h4>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="modal-body">
+                                                         <video id="audio" width="500" height="500" controls poster="gif/music.gif">
+                                                              <source src="02.mp3" type="audio/mpeg">
+                                                              <track  kind="metadata">
+                                                        </video><br><hr>
+                                                        <p class="font-bold">Artista: {{nombre_artistico}}</p>
+                                                        <p class="font-bold">Canción: {{titulo}}</p>   
+                                                        <p class="font-bold">Genero: {{genero}}</p>
+                                                        <p class="font-bold">Duración: {{duracion}}</p>
+                                                    </div>
+                                                    
+                                                    <div class="modal-footer">
+                                                        
+                                                        <button type="submit" ng-click="stopsong()" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+
                             </table>
                         </div>
                     </div>
@@ -648,3 +865,4 @@
         </div>
     </div>
 </section>
+  
