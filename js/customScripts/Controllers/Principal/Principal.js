@@ -11,9 +11,11 @@ angular.module('SoundskapeApp')
 
         var urlparam = $location.search(); //obtencion de los datos del inicio de sesion
         var idusuario;
+        var id_lista_a_borrar;
         $scope.usuario="";//declaracion de usuario
-        
-        
+        $scope.listarep="";
+        $scope.tipolista="";
+
         if(typeof urlparam.param === "undefined"){ //si no obtiene nada del inicio de sesion muestra los botones de registro y login
             $scope.MostrarBotones=true;
             $scope.MostrarPerfil=false; //vista del perfil
@@ -32,6 +34,12 @@ angular.module('SoundskapeApp')
                         $scope.usuario = response.data.records; 
                                 
                  });
+
+           ActualizarListasRep();
+
+            $http.get("php/dbobtenertipolista.php")
+                     .then(function (response) {$scope.tipolista = response.data.records;});
+
         }
 
 
@@ -78,7 +86,9 @@ angular.module('SoundskapeApp')
            $scope.nombre_artistico=nombre_artistico;
            $scope.duracion=duracion;
            
-            sound.play();
+           sound.src=direccion;
+           sound.play();
+
             sound.currentTime = 0;
         }
         $scope.CerrarSesion = function(){ //cierra la sesion y elimina todos los datos
@@ -95,7 +105,58 @@ angular.module('SoundskapeApp')
               
               
         }
+        $scope.CrearLista = function(){
 
+            if(($scope.listname!="") || ($scope.typelist!="")){
+
+             $http.post("php/dbcrearlistarep.php", {
+                                        'listname':$scope.listname, 
+                                        'typelist':$scope.typelist,
+                                        'idusuario':idusuario                                                          
+                        }).then(function successCallback(response) {                                       
+                      
+                        ActualizarListasRep(); 
+                        $scope.listname="";
+                        $scope.typelist="";      
+            });  
+
+            }
+            
+
+
+        }
+
+        $scope.MostrarBorrarLista = function(nombre,id_lista_reproduccion){
+
+            $scope.lista_a_borrar=nombre;
+            id_lista_a_borrar=id_lista_reproduccion;
+
+          
+            
+
+        }
+
+        $scope.BorrarLista = function(){
+              $http.post("php/dbborrarlistarep.php", {
+                                        'id_lista_reproduccion':id_lista_a_borrar                                               
+                        }).then(function successCallback(response) {  
+                      ActualizarListasRep();
+                      id_lista_a_borrar="";
+                        
+                 });
+
+
+        }
+
+        function ActualizarListasRep() {
+           $http.post("php/dbobtenerlistarep.php", {
+                                        'id_usuario':idusuario          //envio del id usuario para obtener listas Reproduccion                                                      
+                        }).then(function successCallback(response) {  
+                                      
+                        $scope.listarep = response.data.records; 
+                                
+                 });            
+        }
 
 
 

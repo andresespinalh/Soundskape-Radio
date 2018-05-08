@@ -7,7 +7,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $data = json_decode(file_get_contents("php://input"));
 $conexion = conectar(); //establece conexion con la base
 $id_genero = $data->id_genero;//recibe el id genero del principal en formato json
-
+$direccionMP3="mp3/";
 
 
 
@@ -20,12 +20,12 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) { //Guarda en rs cada resultado 
     if ($outp != "") {$outp .= ",";}
     $rs["nombre_artistico"] = preg_replace("/[^a-zA-Z0-9_.'()]/", '', $rs["nombre_artistico"]);// Eliminacion de caracteres especiales 
     $rs["titulo"] = preg_replace("/[^a-zA-Z0-9_.'()]/", '', $rs["titulo"]);
-    $rs["direccion"] = preg_replace("/[^a-zA-Z0-9_'()]/", '', $rs["direccion"]);
+    
 
     $outp .= '{"id_cancion":"'  . $rs["id_cancion"] . '",';
     $outp .= '"titulo":"'  . $rs["titulo"] . '",';
-    $outp .= '"duracion":"'  . $rs["duracion"] . '",';
-    $outp .= '"direccion":"'  . $rs["direccion"] . '",';
+    $outp .= '"duracion":"'  .$rs["duracion"] . '",';
+    $outp .= '"direccion":"'  . $direccionMP3. $rs["direccion"] . '",';
     $outp .= '"nombre_artistico":"'   . $rs["nombre_artistico"]    . '"}'; //Se convierte toda la data recibida en fila en formato json
 }
 

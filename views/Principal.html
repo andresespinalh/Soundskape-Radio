@@ -283,6 +283,7 @@
 
         <div class="menu">
             <ul class="list">
+
                 <li class="header">Biblioteca</li>
                 <li class="active">
                     <a href="" class="btn btn-link waves-effect waves-block">
@@ -314,21 +315,34 @@
                         <span>Emisoras</span>
                     </a>
                 </li>
-                <li>
-                    <a href="" class="btn btn-link waves-effect waves-block">
-                        <i class="material-icons">widgets</i>
-                        <span>Archivos Locales</span>
-                    </a>
-                </li>
+                
 
                 <li class="header">Playlist</li>
                 
                 <li>
+                    <a href="" class="btn btn-link waves-effect waves-block menu-toggle" data-toggle="modal" data-target="#ModalCreateList">
+                        <i class="material-icons col-red">playlist_add</i>
+                        <span>Crear Lista de Reproducción</span>
+                    </a>
+                    <li ng-repeat="z in listarep">
                     <a href="" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons col-red">playlist_play</i>
-                        <span>Playlist #1</span>
+                        <span>{{z.nombre}}&nbsp
+                                        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#ModalEditList">
+                                         <i class="material-icons">create</i>
+                                        </button>
+
+                                        <button type="button" ng-click="MostrarBorrarLista(z.nombre,z.id_lista_reproduccion)" class="btn bg-red btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#ModalDeleteList">
+                                         <i class="material-icons">remove</i>
+                                        </button></span>    
+
+
                     </a>
+                    
+                            
                 </li>
+                </li>
+                
                 
             </ul>
         </div>
@@ -339,39 +353,117 @@
                 &copy; 2018 <a href="">Proyecto - IS902 Industria Software </a>
             </div>
         </div>
+
         <!-- #Footer -->
     </aside>
-    <div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+    <!-- MODAL DE CREACION DE LA LISTA -->
+    <div class="modal fade" id="ModalCreateList" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content modal-col-green">
                         <div class="modal-header">
-                            <h4 class="font-bold col-teal">MI PERFIL</h4>
+                            <h4 class="font-bold col-white"><i class="material-icons">add</i>CREAR LISTA</h4>
+                        </div>
+                        <div class="modal-body">
+                            
+                                            <label>Nombre:</label>
+                                            <input type="text" class="form-control" name="listname" ng-model="listname" placeholder=""><br>
+                           
+                             
+                                            <label>Tipo de lista:</label>
+                                            <select class="form-control" name="typelist" ng-model="typelist" required autofocus>
+                                                <option class="placeholder" selected disabled value="">Seleccione tipo de lista</option>
+                                                <option ng-repeat="tipo in tipolista">{{tipo.tipo_lista_reproduccion}}</option>
+                                            </select>
+                                        
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-link waves-effect" data-dismiss="modal" ng-click="CrearLista()">CREAR</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- MODAL DE EDICION DE LA LISTA -->
+    <div class="modal fade" id="ModalEditList" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content modal-col-teal">
+                        <div class="modal-header">
+                            <h4 class="font-bold col-white"><i class="material-icons">create</i>EDITAR LISTA</h4>
+                        </div>
+                        <div class="modal-body">
+                            
+                                            <label>Nuevo nombre:</label>
+                                            <input type="text" class="form-control" placeholder=""><br>
+                           
+                             
+                                            <label>Nuevo Tipo de lista:</label>
+                                            <select class="form-control" name="typelist" ng-model="typelist" required autofocus>
+                                                <option class="placeholder" selected disabled value="">Seleccione tipo de lista</option>
+                                                <option ng-repeat="tipo in tipolista">{{tipo.tipo_lista_reproduccion}}</option>
+                                            </select>
+                                        
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link waves-effect">GUARDAR CAMBIOS</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL DE BORRADO DE LA LISTA -->
+    <div class="modal fade" id="ModalDeleteList" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content modal-col-red">
+                        <div class="modal-header">
+                            <h4 class="font-bold col-white"><i class="material-icons">delete_sweep</i>BORRAR LISTA</h4>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <label>¿Está seguro que desea borra la lista?</label>
+                            <p class=" col-white">{{lista_a_borrar}}</p>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal" ng-click="BorrarLista()">BORRAR</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL DE PERFIL DE USUARIO -->
+    <div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content modal-col-teal">
+                        <div class="modal-header">
+                            <h4 class="font-bold col-white">MI PERFIL</h4>
                             <hr>
                         </div>
                         <div class="modal-body">
                                         
-                                        <h4>Nickname</h4>
-                                        <input type="text" readonly class="form-control" placeholder="{{usuario[0].alias}}">
-                                        <h4>Primer Nombre</h4>
-                                        <input type="text" class="form-control" readonly class="form-control" placeholder="{{usuario[0].primer_nombre}}">
-                                        <h4>Segundo Nombre</h4>
-                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].segundo_nombre}}">
-                                        <h4>Primer Apellido</h4>
-                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].primer_apellido}}">
-                                        <h4>Segundo Apellido</h4>
-                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].segundo_apellido}}">
-                                        <h4>Correo Electronico</h4>
-                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].correo_electronico}}">
-                                        <h4>Fecha de nacimiento</h4>
-                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].fecha_nacimiento}}">
-                                        <h4>Ciudad</h4>
-                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].ciudad}}">
-                                        <h4>País</h4>
-                                        <input type="text" class="form-control" readonly class="form-control"  placeholder="{{usuario[0].pais}}">
+                                        <h4>Nickname:</h4><p class="col-white">{{usuario[0].alias}}</p>
                                         
+                                        <h4>Primer Nombre:</h4><p class=" col-white">{{usuario[0].primer_nombre}}</p>
+                                        
+                                        <h4>Segundo Nombre:</h4><p class=" col-white">{{usuario[0].segundo_nombre}}</p>
+                                        
+                                        <h4>Primer Apellido:</h4><p class=" col-white">{{usuario[0].primer_apellido}}</p>
+                                        
+                                        <h4>Segundo Apellido:</h4><p class=" col-white">{{usuario[0].segundo_apellido}}</p>
+                                        
+                                       <h4>Correo Electronico:</h4><p class=" col-white">{{usuario[0].correo_electronico}}</p>
+                                        
+                                      <h4>Fecha de nacimiento:</h4><p class=" col-white">{{usuario[0].fecha_nacimiento}}</p>
+                                      
+                                        <h4>Ciudad:</h4><p class=" col-white">{{usuario[0].ciudad}}</p>
+                                        
+                                        <h4>País:</h4><p class=" col-white">{{usuario[0].pais}}</p>
+                                       
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
                         </div>
                     </div>
                 </div>
@@ -819,8 +911,8 @@
                                         
                                         <td>{{y.titulo}}</td>
                                         <td>{{y.nombre_artistico}}</td>
-                                        <td><button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#defaultModal" ng-click="playsong(y.titulo,y.nombre_artistico,y.duracion,y.direccion)">
-                                         <i class="material-icons">play_arrow</i>
+                                        <td><button type="button" class="btn bg-pink btn-circle btn-block waves-effect" data-toggle="modal" data-target="#defaultModal" ng-click="playsong(y.titulo,y.nombre_artistico,y.duracion,y.direccion)">
+                                         <i class="material-icons" >play_arrow</i>
                                         </button>
                                         <!-- Large Size -->
                                        
@@ -840,8 +932,7 @@
                                                     <hr>
                                                     <div class="modal-body">
                                                          <video id="audio" width="500" height="500" controls poster="gif/music.gif">
-                                                              <source src="02.mp3" type="audio/mpeg">
-                                                              <track  kind="metadata">
+                                                              
                                                         </video><br><hr>
                                                         <p class="font-bold">Artista: {{nombre_artistico}}</p>
                                                         <p class="font-bold">Canción: {{titulo}}</p>   
@@ -855,7 +946,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                 </div>
 
                             </table>
                         </div>
