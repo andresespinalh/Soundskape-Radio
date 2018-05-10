@@ -11,10 +11,16 @@ angular.module('SoundskapeApp')
 
         var urlparam = $location.search(); //obtencion de los datos del inicio de sesion
         var idusuario;
+        var id_lista;
         var id_lista_a_borrar;
+        var id_lista_a_editar;
+        var id_cancion_a_agregar;
+        $scope.Escuchando="";
         $scope.usuario="";//declaracion de usuario
         $scope.listarep="";
         $scope.tipolista="";
+        $scope.lista_a_editar="";
+        $scope.Nombre_lista="";
 
         if(typeof urlparam.param === "undefined"){ //si no obtiene nada del inicio de sesion muestra los botones de registro y login
             $scope.MostrarBotones=true;
@@ -40,6 +46,8 @@ angular.module('SoundskapeApp')
             $http.get("php/dbobtenertipolista.php")
                      .then(function (response) {$scope.tipolista = response.data.records;});
 
+                                       
+
         }
 
 
@@ -50,7 +58,10 @@ angular.module('SoundskapeApp')
 
         $scope.abrirgenero = function(id_genero,genero){ 
             $scope.viewlistageneros=false; //desaparece la vista de lista de generos
+             $scope.Cancionesporlista=false;
+
             $scope.viewcanciones=true; //muestra la vista de canciones segun el genero seleccionado
+
             $scope.id_genero=id_genero; //obtiene el id genero para recibir canciones por genero
             $scope.genero=genero;
 
@@ -66,21 +77,39 @@ angular.module('SoundskapeApp')
         }
         $scope.abrircanciones = function(){
             $scope.viewcanciones=false;
+            $scope.Cancionesporlista=false;
+
             $scope.viewlistageneros=true; //muestra el view de lista por genero
               
 
         }
 
         $scope.stopsong = function(){ //detiene la cancion del modal
-            
+            $scope.Escuchando="";
+            $('#EscuchandoIcon').removeClass('animated infinite pulse');
            var sound = document.getElementById("audio");
             sound.pause();
             sound.currentTime = 0;
+            sound.close();
+            $scope.EscuchandoIcon="";
+           
+     /*       sound.src =""; 
+            sound.load();*/
+        }
+        $scope.stopsong2 = function(){ //detiene la cancion del modal de lista de reproduccion
+            $scope.Escuchando="";
+           $('#EscuchandoIcon').removeClass('animated infinite pulse');
+           var sound = document.getElementById("audio2");
+            sound.pause();
+            sound.currentTime = 0;
+            sound.close();
+            
+            
      /*       sound.src =""; 
             sound.load();*/
         }
         $scope.playsong = function(titulo,nombre_artistico,duracion,direccion){ //obtiene datos y reproduce la cancion del modal
-            
+           $('#EscuchandoIcon').addClass('animated infinite pulse');  
            var sound = document.getElementById("audio");
            $scope.titulo=titulo;
            $scope.nombre_artistico=nombre_artistico;
@@ -88,6 +117,24 @@ angular.module('SoundskapeApp')
            
            sound.src=direccion;
            sound.play();
+
+           $scope.Escuchando="Escuchando: "+titulo;
+          
+
+
+            sound.currentTime = 0;
+        }
+        $scope.playsong2 = function(titulo,nombre_artistico,duracion,direccion){ //obtiene datos y reproduce la cancion del modal de listas de reproduccion
+           $('#EscuchandoIcon').addClass('animated infinite pulse');
+           var sound = document.getElementById("audio2");
+           $scope.titulo=titulo;
+           $scope.nombre_artistico=nombre_artistico;
+           $scope.duracion=duracion;
+           
+           sound.src=direccion;
+           sound.play();
+           $scope.Escuchando="Escuchando: "+titulo;
+           
 
             sound.currentTime = 0;
         }
@@ -98,10 +145,15 @@ angular.module('SoundskapeApp')
                $scope.visitante="Visitante";
                $scope.MostrarBotones=true;
                $scope.MostrarPerfil=false;
+               $scope.viewcanciones=false; //vista de las canciones por genero
+               $scope.Cancionesporlista=false;
+               $scope.viewlistageneros=true; //vista de la lista de generos
+              
 
 
                $location.path('/Principal');
                $location.search({});
+           
               
               
         }
@@ -144,6 +196,9 @@ angular.module('SoundskapeApp')
                       id_lista_a_borrar="";
                         
                  });
+                $scope.viewlistageneros=true; //vista de la lista de generos
+                $scope.viewcanciones=false; //vista de las canciones por genero
+                $scope.Cancionesporlista=false;
 
 
         }
@@ -158,6 +213,83 @@ angular.module('SoundskapeApp')
                  });            
         }
 
+        
+
+        $scope.MostrarEditarLista = function(nombre,id_lista_reproduccion){
+            $scope.lista_a_editar=nombre;
+            id_lista_a_editar=id_lista_reproduccion;
+
+
+
+        }
+
+        $scope.EditarLista = function(){
+
+             $http.post("php/dbeditarlistarep.php", {
+                                        'id_lista_reproduccion':id_lista_a_editar,
+                                        'nombre': $scope.nombre,
+                                        'tipo': $scope.typelist
+                        }).then(function successCallback(response) {  
+                      ActualizarListasRep();
+                      id_lista_a_editar="";
+                        
+                 });
+
+        }
+
+        $scope.MostrarAgregarCancion = function(id_cancion){
+            id_cancion_a_agregar=id_cancion;
+        }
+
+        $scope.AgregarListaCancion = function(){
+              $http.post("php/dbagregarcancion.php", {
+                                        'id_cancion':id_cancion_a_agregar,
+                                        'lista_reproduccion': $scope.list
+                        }).then(function successCallback(response) {  
+                      ActualizarListasRep();
+                        id_cancion_a_agregar="";
+                        
+                 });
+        }
+
+        $scope.MostrarCancionesporLista = function (id_lista_reproduccion,nombre){
+             $scope.viewlistageneros=false; //vista de la lista de generos
+             $scope.viewcanciones=false; //vista de las canciones por genero
+             $scope.Cancionesporlista=true;
+             $scope.Nombre_lista=nombre;
+             id_lista=id_lista_reproduccion;
+              $http.post("php/dbmostrarlistacancion.php", {
+                                        'id_lista_reproduccion':id_lista_reproduccion
+                        }).then(function successCallback(response) {  
+                      $scope.songslist = response.data.records;
+                        
+                 });
+
+        }
+
+        $scope.eliminarcancion = function(id_cancion){
+
+            $http.post("php/dbeliminarcancion.php", {
+                                        'id_cancion':id_cancion
+                        }).then(function successCallback(response) {  
+                
+                  ActualizarCancionesporLista();
+                 });
+
+                           
+
+        }
+
+        function ActualizarCancionesporLista(){
+
+            $http.post("php/dbmostrarlistacancion.php", {
+                                        'id_lista_reproduccion':id_lista
+                        }).then(function successCallback(response) {  
+                      $scope.songslist = response.data.records;
+                        
+                 });
+          
+        }
 
 
 

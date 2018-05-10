@@ -1,7 +1,6 @@
 <?php
 include('dbconexion.php');
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+header("Content-Type: text/html; charset=ISO-8859-1");
 $conexion = conectar();
 $data = json_decode(file_get_contents("php://input"));
 
@@ -25,7 +24,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {//Recibe con los resultados de 
 }
 
 
-$outp =utf8_decode('{"records":['.$outp.']}'); //Guarda en formato json para el envio al formulario
+$outp ='{"records":['.$outp.']}'; //Guarda en formato json para el envio al formulario
 
 $conexion->close();
 

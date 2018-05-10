@@ -10,8 +10,9 @@ $id_lista_reproduccion = $data->id_lista_reproduccion;
 
 
 
+$conexion->query("DELETE FROM cancion_por_lista_reproduccion WHERE id_lista_reproduccion = '$id_lista_reproduccion'") or die(mysqli_error($conexion));
 
-$sql_idtipo = $conexion->query("DELETE FROM lista_reproduccion WHERE id_lista_reproduccion = $id_lista_reproduccion");
+$conexion->query("DELETE FROM lista_reproduccion WHERE id_lista_reproduccion = '$id_lista_reproduccion'") or die(mysqli_error($conexion));
 
 
 

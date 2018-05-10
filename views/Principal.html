@@ -286,9 +286,9 @@
 
                 <li class="header">Biblioteca</li>
                 <li class="active">
-                    <a href="" class="btn btn-link waves-effect waves-block">
+                    <a href="" id="EscuchandoIcon" >
                         <i class="material-icons">hearing</i>
-                        <span>Escuchadas reciente</span>
+                        <span>{{Escuchando}}</span>
                     </a>
                 </li>
                 <li>
@@ -318,17 +318,17 @@
                 
 
                 <li class="header">Playlist</li>
-                
+                <div ng-show="MostrarPerfil">
                 <li>
-                    <a href="" class="btn btn-link waves-effect waves-block menu-toggle" data-toggle="modal" data-target="#ModalCreateList">
+                    <a  class="btn btn-link waves-effect waves-block menu-toggle" data-toggle="modal" data-target="#ModalCreateList">
                         <i class="material-icons col-red">playlist_add</i>
                         <span>Crear Lista de Reproducción</span>
                     </a>
                     <li ng-repeat="z in listarep">
-                    <a href="" class="btn btn-link waves-effect waves-block">
+                    <a ng-click="MostrarCancionesporLista(z.id_lista_reproduccion,z.nombre)" class="btn btn-link waves-effect waves-block">
                         <i class="material-icons col-red">playlist_play</i>
                         <span>{{z.nombre}}&nbsp
-                                        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#ModalEditList">
+                                        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#ModalEditList" ng-click="MostrarEditarLista(z.nombre,z.id_lista_reproduccion)">
                                          <i class="material-icons">create</i>
                                         </button>
 
@@ -342,7 +342,7 @@
                             
                 </li>
                 </li>
-                
+                </div>
                 
             </ul>
         </div>
@@ -394,7 +394,7 @@
                         <div class="modal-body">
                             
                                             <label>Nuevo nombre:</label>
-                                            <input type="text" class="form-control" placeholder=""><br>
+                                            <input type="text" class="form-control" ng-model="nombre" placeholder="{{lista_a_editar}}"><br>
                            
                              
                                             <label>Nuevo Tipo de lista:</label>
@@ -406,7 +406,7 @@
                             
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-link waves-effect">GUARDAR CAMBIOS</button>
+                            <button type="button" class="btn btn-link waves-effect" ng-click="EditarLista()" data-dismiss="modal">GUARDAR CAMBIOS</button>
                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
                         </div>
                     </div>
@@ -917,9 +917,31 @@
                                         <!-- Large Size -->
                                        
                                         </td>
-                                        <td><button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float">
+                                        <td><button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#AddListModal" ng-click="MostrarAgregarCancion(y.id_cancion)">
                                          <i class="material-icons">add</i>
                                         </button></td>
+
+                                         <div class="modal fade" id="AddListModal" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="defaultModalLabel">¿A qué lista de reproducción desea agregar?</h4>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="modal-body">
+                                                        <select class="form-control" name="list" ng-model="list" required autofocus>
+                                                            <option class="placeholder" selected disabled value="">Seleccione lista de reproducción</option>
+                                                            <option ng-repeat="z in listarep">{{z.nombre}}</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div class="modal-footer">
+                                                        <button type="submit" ng-click="AgregarListaCancion()" class="btn btn-link waves-effect" data-dismiss="modal">AGREGAR</button>
+                                                        <button type="submit"  class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                 </div>
                                     </tr>
                                    
                                 </tbody>
@@ -941,8 +963,9 @@
                                                     </div>
                                                     
                                                     <div class="modal-footer">
-                                                        
+                                                        <button type="submit" class="btn btn-link waves-effect" data-dismiss="modal">MINIMIZAR</button>
                                                         <button type="submit" ng-click="stopsong()" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -954,6 +977,78 @@
                 </div>
             </div>
         </div>
+        <div ng-show="Cancionesporlista">
+            <div class="block-header">
+            <h1 class="font-bold col-teal">{{Nombre_lista}}</h1>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            
+                            
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>CANCIÓN</th>
+                                        <th>ARTISTA</th>
+                                        <th>PLAY</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  ng-repeat="y in songslist">
+                                        
+                                        <td>{{y.titulo}}</td>
+                                        <td>{{y.nombre_artistico}}</td>
+                                        <td><button type="button" class="btn bg-pink btn-circle btn-block waves-effect" data-toggle="modal" data-target="#defaultModal2" ng-click="playsong2(y.titulo,y.nombre_artistico,y.duracion,y.direccion)">
+                                         <i class="material-icons" >play_arrow</i>
+                                        </button>
+                                        <!-- Large Size -->
+                                       
+                                        </td>
+                                        <td><button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float" ng-click="eliminarcancion(y.id_cancion)" data-toggle="modal" data-target="#defaultModal3" >
+                                         <i class="material-icons">remove</i>
+                                        </button></td>
+
+                                         <div class="modal fade" id="defaultModal2" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="defaultModalLabel">{{titulo}} - {{nombre_artistico}}</h4>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="modal-body">
+                                                         <video id="audio2" width="500" height="500" controls poster="gif/music.gif">
+                                                              
+                                                        </video><br><hr>
+                                                        <p class="font-bold">Artista: {{nombre_artistico}}</p>
+                                                        <p class="font-bold">Canción: {{titulo}}</p>   
+                                                        <p class="font-bold">Duración: {{duracion}}</p>
+                                                    </div>
+                                                    
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-link waves-effect" data-dismiss="modal">MINIMIZAR</button>
+                                                        <button type="submit" ng-click="stopsong2()" class="btn btn-link waves-effect" data-dismiss="modal">DETENER</button>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                 </div>
+                                    </tr>
+                                   
+                                </tbody>
+                                
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </div>
 </section>
   

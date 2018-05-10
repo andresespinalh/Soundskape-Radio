@@ -1,5 +1,7 @@
 <?php 
 include('dbconexion.php');
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: text/html; charset=ISO-8859-1");
 
 
 $conexion = conectar();
@@ -7,7 +9,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 
 //Recibimos datos del inicio de sesion
-$id_usuario = $data->id_usuario;
+$id_usuario = utf8_decode($data->id_usuario);
 
 $result = $conexion->query( "call infoPerson('$id_usuario')");
 
@@ -37,7 +39,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
  $outp .= '"ciudad":"'   . $ciudad        . '",';
  $outp .= '"pais":"'   . $pais        . '"}';
 
- $outp =utf8_decode('{"records":['.$outp.']}');
+ $outp ='{"records":['.$outp.']}';
  echo $outp;
 
 

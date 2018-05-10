@@ -5,15 +5,15 @@ $conexion = conectar(); //establece conexion con la base
 $data = json_decode(file_get_contents("php://input"));
 
 //Se recibe toda la data del formulario
-$namesurname = $data->namesurname;
-$password = $data->password;
-$email = $data->email;
+$namesurname = utf8_decode($data->namesurname);
+$password = utf8_decode($data->password);
+$email = utf8_decode($data->email);
 $borndate = $data->borndate;
-$city = $data->city;
-$firstname = $data->firstname;
-$secondname = $data->secondname;
-$firstlastname = $data->firstlastname;
-$secondlastname = $data->secondlastname;
+$city = utf8_decode($data->city);
+$firstname = utf8_decode($data->firstname);
+$secondname = utf8_decode($data->secondname);
+$firstlastname = utf8_decode($data->firstlastname);
+$secondlastname = utf8_decode($data->secondlastname);
 $password=base64_encode($password); //Encriptacion de la contraseña
 $now = date('Y-m-d'); //Fecha de hoy
 

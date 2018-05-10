@@ -7,8 +7,8 @@ $data = json_decode(file_get_contents("php://input"));
 
 
 //Recibimos datos del inicio de sesion
-$namesurname = $data->namesurname;
-$password = $data->password;
+$namesurname = utf8_decode($data->namesurname);
+$password = utf8_decode($data->password);
 
 
 $result = $conexion->query( "SELECT * FROM usuario WHERE alias='$namesurname'"); //Recibe datos del usuario segun pass ingresada
