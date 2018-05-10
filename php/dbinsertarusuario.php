@@ -41,7 +41,7 @@ $row_id_tipo = mysqli_fetch_array($sql_id_tipo)  or die(mysqli_error());
 $id_tipo=$row_id_tipo[0];
 
 //Insercion del usuario
-$conexion->query("INSERT INTO usuario( alias,contrasenia, fecha_ingreso, id_tipo_usuario, id_persona) VALUES ('$namesurname','$namesurname','$password','$now','$id_tipo','$personid')");
+$conexion->query("INSERT INTO usuario( id_usuario, alias,contrasenia, fecha_ingreso, id_tipo_usuario, id_persona) VALUES ('$namesurname','$namesurname','$password','$now','$id_tipo','$personid')");
 
 $conexion->Close();//Cierre de la conexion
 
