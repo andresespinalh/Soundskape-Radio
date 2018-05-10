@@ -2,7 +2,7 @@
 include('dbconexion.php'); 
 
 header("Access-Control-Allow-Origin: *");
-header('Content-Type: text/html; charset=UTF-8');
+header('Content-Type: text/html; charset=ISO-8859-1');
 
 $data = json_decode(file_get_contents("php://input"));
 $conexion = conectar(); //establece conexion con la base
