@@ -90,7 +90,7 @@ angular.module('SoundskapeApp')
            var sound = document.getElementById("audio");
             sound.pause();
             sound.currentTime = 0;
-            sound.close();
+           
             $scope.EscuchandoIcon="";
            
      /*       sound.src =""; 
@@ -102,7 +102,6 @@ angular.module('SoundskapeApp')
            var sound = document.getElementById("audio2");
             sound.pause();
             sound.currentTime = 0;
-            sound.close();
             
             
      /*       sound.src =""; 
